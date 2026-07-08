@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: index.php");  // Админ → админ-панель
         } elseif ($_SESSION['user_role'] === 'user') {
             header("Location: user.php");   // Пользователь → обычная панель
+            exit;
         }
     }
 }
