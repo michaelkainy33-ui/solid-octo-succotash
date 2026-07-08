@@ -1,11 +1,11 @@
 <?php
 
-
 declare(strict_types=1); // Строгая типезация
 
 require __DIR__ . '/bd.php';
 
-header('Content-Type: text/csv; charset=uft-8');
+header('Content-Type: text/csv; charset=utf-8');
+echo "\xEF\xBB\xBF";
 header('Content-Disposition: attachment; filename="students.csv"');
 
 $out = fopen('php://output', 'w');
@@ -19,6 +19,4 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 }
 
 fclose($out);
-
-
 ?>
