@@ -28,15 +28,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             exit;
         } catch (PDOException $e) {
-            if ((int) $e->errorInfo[1] === 1062) {
-                $errors['email'] = 'Эта почта уже есть!';
-            } else {
-                $errors['common'] = $e->getMessage();
-            }
-        }
+    error_log('Ошибка при сохранении студента: ' . $e->getMessage());
+    if ((int) $e->errorInfo[1] === 1062) {
+        $errors['email'] = 'Эта почта уже есть!';
+    } else {
+        $errors['common'] = 'Ошибка при сохранении данных. Попробуйте позже.';
+    }
+}
     } else {
 
-        var_dump($errors);
     }
 }
 
