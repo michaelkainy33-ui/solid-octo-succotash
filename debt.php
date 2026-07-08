@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if (!empty($errors)): ?>
         <div style="color: red;">
             <?php foreach ($errors as $error): ?>
-                <p><?= $error ?></p>
+                <p><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></p>
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
