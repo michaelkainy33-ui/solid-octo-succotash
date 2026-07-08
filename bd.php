@@ -22,11 +22,9 @@ try {
     // соединение бд
     $pdo = new PDO($dsn, $db['user'], $db['pass'], $options);
 } catch (PDOException $e) {
-    // выводит ошибку 500
+    error_log('Ошибка БД: ' . $e->getMessage() . ' в ' . $e->getFile() . ' на строке ' . $e->getLine());
     http_response_code(500);
-    // Ловит и возвращает ошибку 
-    exit("Ошибка бд: ".htmlspecialchars($e->getMessage()));
-
+    exit("Извините, произошла техническая ошибка. Мы уже работаем над её устранением.");
 }
 
 ?>
