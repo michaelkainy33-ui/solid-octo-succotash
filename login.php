@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // ПРОВЕРКА: найден ли пользователь
     if ($user !== false && password_verify($password, $user['password'])) {
+        session_regenerate_id(true); 
         // Сохраняем в сессии ВСЕ данные пользователя
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['email'] = $username;
