@@ -7,6 +7,11 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
+    header('Location: user.php');
+    exit;
+}
+
 require __DIR__ . '/bd.php';
 require __DIR__ . '/functions.php';
 
